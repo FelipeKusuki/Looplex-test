@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Adicionando novos itens na lista com Patches 1`] = `
+Array [
+  Object {
+    "op": "add",
+    "path": "/items/0",
+    "value": Object {
+      "image": "",
+      "name": "PlayStation 5",
+      "price": 5000,
+    },
+  },
+]
+`;
+
+exports[`can add new items 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "image": "",
+      "name": "Xbox",
+      "price": 5000,
+    },
+  ],
+}
+`;
+
+exports[`can add new items 2`] = `
+Array [
+  Object {
+    "items": Array [
+      Object {
+        "image": "",
+        "name": "PlayStation 5",
+        "price": 5000,
+      },
+    ],
+  },
+  Object {
+    "items": Array [
+      Object {
+        "image": "",
+        "name": "Xbox",
+        "price": 5000,
+      },
+    ],
+  },
+]
+`;
