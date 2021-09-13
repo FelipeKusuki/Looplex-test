@@ -89,3 +89,8 @@ body, select, input, button {
 .item-edit input:focus {
   border-color: #964747;
 }
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+}

@@ -49,6 +49,16 @@
             "name": "teste",
             "price": 2,
             "image": ""
+          },
+          {
+            "name": "Machine Gun Preacher",
+            "price": 7.35,
+            "image": "https://images-na.ssl-images-amazon.com/images/I/91AFFK9fwkL._SY445_.jpg"
+          },
+          {
+            "name": "LEGO Mindstorms EV3",
+            "price": 349.95,
+            "image": "https://images-na.ssl-images-amazon.com/images/I/71CpQw%2BufNL._SL1000_.jpg"
           }
         ]
       },
@@ -68,7 +78,18 @@
       "name": "Bart",
       "gender": "m",
       "wishList": {
-        "items": []
+        "items": [
+          {
+            "name": "Machine Gun Preacher",
+            "price": 7.31,
+            "image": "https://images-na.ssl-images-amazon.com/images/I/91AFFK9fwkL._SY445_.jpg"
+          },
+          {
+            "name": "LEGO Mindstorms EV3",
+            "price": 349.95,
+            "image": "https://images-na.ssl-images-amazon.com/images/I/71CpQw%2BufNL._SL1000_.jpg"
+          }
+        ]
       },
       "recipient": "a342"
     },

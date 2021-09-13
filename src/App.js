@@ -1,36 +1,55 @@
 import React, { Component } from "react"
 import { observer } from "mobx-react"
+import Button from "@material-ui/core/Button";
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import logo from "./assets/santa-claus.png"
-
 import WishListView from "./components/wishListView/WishListView"
 
 class App extends Component {
     constructor(props) {
-        super()
+        super(props)
         this.state = { selectedUser: null }
     }
 
     render() {
         const { group } = this.props
-        const selectedUser = group.users.get(this.state.selectedUser)
+        const selectedUser = group?.users.get(this.state.selectedUser)
         return (
             <div className="App">
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
                     <h1 className="App-title">WishList</h1>
                 </header>
-                <button onClick={group.reload}>Reload</button>
-                <select onChange={this.onSelectUser}>
-                    <option>- Select user -</option>
-                    {/* Array.from converts an iterable to array, so that we can map over it */}
+                <div className="buttons">
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={group?.reload}
+                    >
+                    Reload
+                </Button>
+
+                <Select
+                    labelId="user-select-label"
+                    id="user-select"
+                    value={selectedUser}
+                    onChange={this.onSelectUser}>
+                    <MenuItem value={'Select user'}>- Select user -</MenuItem>
                     {Array.from(group.users.values()).map(user => (
-                        <option key={user.id} value={user.id}>
-                            {user.name}
-                        </option>
+                        <MenuItem key={user.id} value={user.id}>{user.name}</MenuItem>
                     ))}
-                </select>
-                <button onClick={group.drawLots}>Draw lots</button>
+                </Select>
+
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={group?.drawLots}
+                    >
+                    Draw lots
+                </Button>
+                </div>
                 {selectedUser && <User user={selectedUser} />}
             </div>
         )
@@ -44,7 +63,13 @@ class App extends Component {
 const User = observer(({ user }) => (
     <div>
         <WishListView wishList={user.wishList} />
-        <button onClick={user.getSuggestions}>Suggestions</button>
+        <Button
+            variant="contained"
+            color="primary"
+            onClick={user.getSuggestions}
+            >
+            Suggestions
+        </Button>
         <hr />
         <h2>{user.recipient ? user.recipient.name : ""}</h2>
         {user.recipient && <WishListView wishList={user.recipient.wishList} readonly />}

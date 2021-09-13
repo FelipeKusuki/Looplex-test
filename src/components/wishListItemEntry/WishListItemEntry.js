@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import { observer } from "mobx-react"
+import Button from "@material-ui/core/Button";
 
 import WishListItemEdit from "../wishListItemEdit/WishListItemEdit"
-
 import { WishListItem } from "../../models/wishList/WishList"
 
 class WishListItemEntry extends Component {
@@ -20,7 +20,13 @@ class WishListItemEntry extends Component {
         return (
             <div>
                 <WishListItemEdit item={this.state.entry} />
-                <button onClick={this.onAdd}>Add</button>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={this.onAdd}
+                    >
+                    Add
+                </Button>
             </div>
         )
     }
