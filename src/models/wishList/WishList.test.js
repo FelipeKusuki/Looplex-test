@@ -16,6 +16,10 @@ beforeEach(() => {
             {
                 name: "Garrafa de água",
                 price: 5.50
+            },
+            {
+                name: "Batata",
+                price: 4.50
             }
         ]
     })
@@ -27,8 +31,9 @@ it("Cria instancia do model", () => {
 })
 
 it("Cria uma lista de desejos", () => {
-    expect(list.items.length).toBe(1);
+    expect(list.items.length).toBe(2);
     expect(list.items[0].price).toBe(5.50);
+    expect(list.items[1].price).toBe(4.50);
 })
 
 it("Adicionando novos itens na lista com Patches", () => {
@@ -42,7 +47,7 @@ it("Adicionando novos itens na lista com Patches", () => {
     expect(patches).toMatchSnapshot()
 })
 
-it("can add new items", () => {
+it("Adicionando novos itens na lista com Snapshot", () => {
     const list = WishList.create()
     const states = []
     onSnapshot(list, snapshot => {
@@ -59,4 +64,18 @@ it("can add new items", () => {
     expect(list.items[0].name).toBe("Xbox")
     expect(getSnapshot(list)).toMatchSnapshot()
     expect(states).toMatchSnapshot()
+})
+
+it("Calculo de preço total da lista", () => {
+    const newlist = WishList.create(list)
+
+    expect(newlist.totalPrice).toBe(10)
+
+    let changed = 0
+    reaction(() => newlist.totalPrice, () => changed++)
+
+    expect(changed).toBe(0)
+    newlist.items[0].changeName("Test")
+    expect(changed).toBe(0)
+    newlist.items[0].changePrice(100)
 })
